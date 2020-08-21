@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import Responsive from "./Responsive";
-import Button from "./Button";
-import { Link } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import Responsive from './Responsive';
+import Button from './Button';
+import { Link } from 'react-router-dom';
 
 //responsive 에서 반응형도 만들어보기
 const HeaderBlock = styled.div`
@@ -24,7 +24,6 @@ const Wrapper = styled(Responsive)`
   }
   .right {
     display: flex;
-    align-items: center;
   }
 `;
 
@@ -39,16 +38,9 @@ const Title = styled.li`
   padding: 0;
 `;
 
-const MenuBlock = styled.ul`
-  position: fixed;
-  left: 400px;
-`;
 const Menu = styled.li`
   list-style-type: none;
-  margin: 0;
-  padding: 0;
-  padding: 16px;
-  //text-align: center;
+  padding: 20px;
   float: left;
 `;
 
@@ -57,15 +49,22 @@ const Header = () => {
     <>
       <HeaderBlock>
         <Wrapper>
-          <div className="logo">
+          {/* <div className="logo">
             <ul>
               <Title>
                 <Link to="/">SAMSUNG - SERVICE CENTER</Link>
               </Title>
             </ul>
-            {/* <div>SAMSUNG - SERVICE CENTER</div> */}
-          </div>
-          <MenuBlock>
+            <div>SAMSUNG - SERVICE CENTER</div>
+          </div> */}
+
+          <ul className="logo">
+            <Title>
+              <Link to="/">SAMSUNG - SERVICE CENTER</Link>
+            </Title>
+          </ul>
+
+          <ul>
             <Menu>
               <Link to="/business">Business</Link>
             </Menu>
@@ -78,7 +77,7 @@ const Header = () => {
             <Menu>
               <Link to="/Qanda">Q&A</Link>
             </Menu>
-          </MenuBlock>
+          </ul>
 
           <div className="right">
             <Button>로그인</Button>
