@@ -10,20 +10,25 @@ const FooterBlock = styled.div`
   //display: flex;
   justify-content: center;
   font-family: 'Alata', sans-serif;
-  padding: 30px;
-  //margin: 50px;
-  font-size: 20px;
+  //padding: 30px;
+  margin: 50px;
+  font-size: 17px;
 `;
 const Up = styled.div`
   display: flex;
   //margin: 30px;
   //padding: 30px;
 `;
+const Right = styled.div`
+  margin-right: 100px;
+`;
 
-//const Down = styled.div``;
+const Down = styled.div`
+  margin-top: 50px;
+`;
 
 const FontBule = styled.div`
-  color: bule;
+  color: blue;
 `;
 const FontGray = styled.div`
   color: gray;
@@ -32,36 +37,38 @@ const FontGray = styled.div`
 const Footer = () => {
   return (
     <FooterBlock>
+      <FontBule>VISIT US</FontBule>
       <Up>
-        <div>
-          <FontBule>VISIT US</FontBule>
+        <Right>
           <FontBule>WEST VILLAGE (NYC)</FontBule>
           <FontGray>28 GREENWICH AVE</FontGray>
           <FontGray> NEW YORK, NY 10011</FontGray>
           <FontGray>212.498.9810</FontGray>
-        </div>
-        <div>
+        </Right>
+        <Right>
           <FontBule>MIDTOWN (NYC)</FontBule>
           <FontGray>COMING SOON</FontGray>
           <FontGray>601LEXINGTON AVENUE</FontGray>
           <FontGray>NEW YORK, NY 10022</FontGray>
-        </div>
-        <div>
+        </Right>
+        <Right>
           <FontBule>WASHIGNTON DC</FontBule>
           <FontGray>MAH-ZE-DAHR BAKERY AT GASTSBY</FontGray>
           <FontGray>COMING SOON</FontGray>
           <FontGray>1201 HALF STREET SE,</FontGray>
           <FontGray>WASHINGTON DC 20003</FontGray>
-        </div>
+        </Right>
       </Up>
-      <div>
-        <FontBule>© 2020 MAHZEDAHR BAKERY LLC BRANDING &</FontBule>
-        <FontGray>BRANDING & CREATIVE DIRECTION: J’AIME COHEN</FontGray>
-        <FontGray>
-          PHOTOGRAPHY: KATE MATHIS, STEPHEN KENT JOHNSON, AND VANESSA REES
-        </FontGray>
-        <FontGray>WEBSITE DESIGN & DEVELOPMENT: W&CO</FontGray>
-      </div>
+      <Down>
+        <div>
+          <FontBule>© 2020 MAHZEDAHR BAKERY LLC BRANDING &</FontBule>
+          <FontGray>BRANDING & CREATIVE DIRECTION: J’AIME COHEN</FontGray>
+          <FontGray>
+            PHOTOGRAPHY: KATE MATHIS, STEPHEN KENT JOHNSON, AND VANESSA REES
+          </FontGray>
+          <FontGray>WEBSITE DESIGN & DEVELOPMENT: W&CO</FontGray>
+        </div>
+      </Down>
     </FooterBlock>
   );
 };
