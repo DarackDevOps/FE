@@ -1,5 +1,6 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
+
 const Photo = styled.img`
   width: auto;
   height: auto;
@@ -15,18 +16,26 @@ const PhotoBlock = styled.div`
 const Main = () => {
   return (
     <>
+      <div>
+        <h3>SAMSUNG - SERVIECE CENTER.</h3>
+      </div>
+
       <PhotoBlock>
-        <Photo src={require("../images/1.jpg")} />
-        <Photo src={require("../images/2.jpg")} />
+        <Photo src={require('../images/1.jpg')} />
+        <Photo src={require('../images/2.jpg')} />
         <h3>1,2번내용입니다.</h3>
       </PhotoBlock>
       <PhotoBlock>
-        <Photo src={require("../images/3.jpg")} />
-        <Photo src={require("../images/4.jpg")} />
+        <Photo src={require('../images/3.jpg')} />
+        <Photo src={require('../images/4.jpg')} />
         <div>
           <h3>3,4번내용입니다.</h3>
         </div>
       </PhotoBlock>
+
+      <h3>3,4번내용입니다.</h3>
+
+      <h3>3,4번내용입니다.</h3>
     </>
   );
 };
