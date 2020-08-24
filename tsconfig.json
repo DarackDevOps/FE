@@ -14,6 +14,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
+    //추가하면서 react-reveal 타입스크립트에서도 사용가능.
     "noImplicitAny": false
   },
   "include": ["src"]
