@@ -6,18 +6,22 @@ const FooterBlock = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
-  background: #ffffff;
+  height: 400px;
+
   //display: flex;
   justify-content: center;
   font-family: 'Alata', sans-serif;
   //padding: 30px;
-  margin: 50px;
+  //margin: 50px;
   font-size: 17px;
 `;
 const Up = styled.div`
+  //height: 200px;
   display: flex;
   //margin: 30px;
   //padding: 30px;
+  background: #faf9f8;
+  //color: #e4e3e2;
 `;
 const Right = styled.div`
   margin-right: 100px;
@@ -37,7 +41,9 @@ const FontGray = styled.div`
 const Footer = () => {
   return (
     <FooterBlock>
-      <FontBule>VISIT US</FontBule>
+      <Up>
+        <FontBule>VISIT US</FontBule>
+      </Up>
       <Up>
         <Right>
           <FontBule>WEST VILLAGE (NYC)</FontBule>
