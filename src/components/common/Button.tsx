@@ -15,7 +15,7 @@ const StyledButton = styled.div`
   &:hover {
     background: #868e96;
   }
-  margin-left: 10px;
+  margin-right: 10px;
 `;
 
 const Button = (props: any) => <StyledButton {...props} />;
