@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "../common/Button"
+import Button from "../components/common/Button"
+import Header from '../components/board/Header';
 
 const Table = styled.table`
     display: block;
@@ -38,6 +39,7 @@ const ListButton = styled(Button)`
 const Post = () => {
     return(
         <div>
+            <Header />
             <Table>
                     <Td width="120">제목</Td>
                     <Td width="840" colSpan={3}>휴대폰 필름교체</Td>
