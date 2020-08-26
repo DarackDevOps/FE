@@ -8,13 +8,12 @@ import { Link } from 'react-router-dom';
 const HeaderBlock = styled.div`
   //position: fixed;
   width: 100%;
-  //display: flex;
   background: white;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const Wrapper = styled(Responsive)`
-  height: 4rem;
+  height: 10rem;
   display: flex;
   align-items: center;
 
@@ -25,14 +24,8 @@ const Wrapper = styled(Responsive)`
     font-size: 1.125rem;
     font-weight: 600;
     letter-spacing: 2px;
-    //float: left;
-  }
-  .menuBar {
-    //float: left;
-    //margin-right: 5rem;
   }
   .right {
-    //float: right;
   }
 `;
 
@@ -46,28 +39,39 @@ const Title = styled.li`
   list-style-type: none;
   margin: 0;
   padding: 0;
+  border: 1px solid red;
 `;
-//메뉴 링크
-const Menu = styled.li`
+
+//메인 메뉴
+const MainMenu = styled.ul`
   list-style-type: none;
   padding: 20px;
   float: left;
+  &:hover {
+    opacity: 1;
+    visibility: visible;
+  }
 `;
+const LiMain = styled.li`
+  float: left;
+  padding: 30px;
+  border: 1px solid red;
+`;
+//서브 메뉴
+const SubMenu = styled.ul`
+  list-style-type: none;
+  padding: 20px;
+  float: left;
+  visibility: hidden;
+  opacity: 0;
+`;
+const LiSub = styled.li``;
 
 const Header = () => {
   return (
     <>
       <HeaderBlock>
         <Wrapper>
-          {/* <div className="logo">
-            <ul>
-              <Title>
-                <Link to="/">SAMSUNG - SERVICE CENTER</Link>
-              </Title>
-            </ul>
-            <div>SAMSUNG - SERVICE CENTER</div>
-          </div> */}
-
           <ul className="logo">
             <Title>
               <Link to="/">
@@ -76,26 +80,37 @@ const Header = () => {
             </Title>
           </ul>
 
-          <ul className="menuBar">
-            <Menu>
+          <MainMenu>
+            <LiMain>
               <Link to="/business">Business</Link>
-            </Menu>
-            <Menu>
+              <SubMenu>
+                <LiSub>
+                  <Link to="/SmartPhone">sub1</Link>
+                </LiSub>
+                <LiSub>
+                  <Link to="/SmartPhone">sub1</Link>
+                </LiSub>
+                <LiSub>
+                  <Link to="/SmartPhone">sub1</Link>
+                </LiSub>
+              </SubMenu>
+            </LiMain>
+            <LiMain>
               <Link to="/Map">Map</Link>
-            </Menu>
-            <Menu>
+            </LiMain>
+            <LiMain>
               <Link to="/Board">Board</Link>
-            </Menu>
-            <Menu>
+            </LiMain>
+            <LiMain>
               <Link to="/Qanda">Q&A</Link>
-            </Menu>
-          </ul>
+            </LiMain>
+          </MainMenu>
           <div className="right">
             <Button>로그인</Button>
           </div>
         </Wrapper>
       </HeaderBlock>
-      {/* <Spacer /> */}
+      <Spacer />
     </>
   );
 };

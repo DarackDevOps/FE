@@ -3,51 +3,105 @@ import styled from 'styled-components';
 import { Parallax } from 'react-parallax';
 import back1 from '../images/MainImages/back1.jpg';
 //import back2 from '../images/MainImages/back2.jpg';
-import '../index.css';
 
-// import {
-//   CarouselProvider,
-//   Slider,
-//   Slide,
-//   ButtonBack,
-//   ButtonNext,
-// } from 'pure-react-carousel';
+import Ultra from '../images/MainImages/galaxyUltra.jpg';
+import Bespoke from '../images/MainImages/bespoke.jpg';
+import ChefCollection from '../images/MainImages/chefCollection.jpg';
+import Watch from '../images/MainImages/galaxyWatch.jpg';
+import Button from '../components/common/Button';
+import '../index.css';
 import Fade from 'react-reveal/Fade';
+import Slider from 'react-slick';
 
 const Photo = styled.img`
   width: auto;
-  height: auto;
-  max-width: 250px;
-  max-height: 250px;
-  margin-left: 20px;
+  // height: auto;
+  max-width: 100%;
+  // max-height: 300px;
+
+  //margin-left: 20px;
 `;
-const PhotoBlock = styled.div`
-  margin: 0 auto;
-  width: 1200px;
-`;
+
 const Block = styled.div`
   text-align: center;
   padding: 40px;
   color: #ffffff;
   font-family: 'Alata', sans-serif;
 `;
+const Center = styled.div`
+  //text-align: center;
+`;
+const Wrap = styled.div`
+  position: relative;
+  padding: 2%;
+`;
+const InsideStyles = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+`;
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+};
 
 const Main = () => {
   return (
     <>
-      {/* <CarouselProvider
-        naturalSlideHeight={125}
-        naturalSlideWidth={100}
-        totalSlides={3}
-      >
-        <Slider>
-          <Slide index={0}>first slide.</Slide>
-          <Slide index={1}>first slide.</Slide>
-          <Slide index={2}>first slide.</Slide>
+      <div>
+        <Slider settings>
+          <Wrap>
+            {/* <Photo src={Fold} /> */}
+            <InsideStyles>
+              <h2>당신에게</h2>
+              <h2>꼭 맞는 갤럭시는?</h2>
+              <p>성능도 크기도 다양한 갤럭시 스마트폰.</p>
+              <p>한눈에 쉽게 비교해보세요.</p>
+              <Button>시작하기</Button>
+            </InsideStyles>
+            <Photo src={Ultra} />
+          </Wrap>
+          <Wrap>
+            {/* <Photo src={Fold} /> */}
+            <InsideStyles>
+              <h2>당신에게</h2>
+              <h2>꼭 맞는 갤럭시는?</h2>
+              <p>성능도 크기도 다양한 갤럭시 스마트폰.</p>
+              <p>한눈에 쉽게 비교해보세요.</p>
+              <Button>시작하기</Button>
+            </InsideStyles>
+            <Photo src={Watch} />
+          </Wrap>
+
+          <Wrap>
+            {/* <Photo src={Fold} /> */}
+            <InsideStyles>
+              <h2>당신에게</h2>
+              <h2>꼭 맞는 갤럭시는?</h2>
+              <p>성능도 크기도 다양한 갤럭시 스마트폰.</p>
+              <p>한눈에 쉽게 비교해보세요.</p>
+              <Button>시작하기</Button>
+            </InsideStyles>
+            <Photo src={ChefCollection} />
+          </Wrap>
+          <Wrap>
+            {/* <Photo src={Fold} /> */}
+            <InsideStyles>
+              <h2>당신에게</h2>
+              <h2>꼭 맞는 갤럭시는?</h2>
+              <p>성능도 크기도 다양한 갤럭시 스마트폰.</p>
+              <p>한눈에 쉽게 비교해보세요.</p>
+              <Button>시작하기</Button>
+            </InsideStyles>
+            <Photo src={Bespoke} />
+          </Wrap>
         </Slider>
-        <ButtonBack>Back</ButtonBack>
-        <ButtonNext>Next</ButtonNext>
-      </CarouselProvider> */}
+      </div>
       <Parallax
         bgImage={back1}
         //시차효과강도
@@ -63,27 +117,6 @@ const Main = () => {
       <Fade left>
         <h3>SAMSUNG - SERVIECE CENTER.</h3>
       </Fade>
-
-      <PhotoBlock>
-        <Fade left>
-          <h3>SAMSUNG - SERVIECE CENTER.</h3>
-        </Fade>
-        <Photo src={require('../images/1.jpg')} />
-        <Photo src={require('../images/2.jpg')} />
-        <h3>1,2번내용입니다.</h3>
-      </PhotoBlock>
-      <PhotoBlock>
-        <Photo src={require('../images/3.jpg')} />
-        <Photo src={require('../images/4.jpg')} />
-        <div>
-          <h3>3,4번내용입니다.</h3>
-        </div>
-      </PhotoBlock>
-
-      <h3>3,4번내용입니다.</h3>
-
-      <h3>3,4번내용입니다.</h3>
-
       <Fade left>
         <section>
           <h3>SAMSUNG - SERVIECE CENTER.</h3>
