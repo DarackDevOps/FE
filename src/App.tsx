@@ -10,17 +10,17 @@ import Qanda from './pages/Qanda';
 import Main from './pages/Main';
 function App() {
   return (
-    <>
+    <div>
       <Header />
-      <div>
-        <Route component={Main} exact path="/" />
-        <Route component={Business} path="/business" />
-        <Route component={Map} path="/map" />
-        <Route component={Board} path="/board" />
-        <Route component={Qanda} path="/qanda" />
-      </div>
+
+      <Route component={Main} exact path="/" />
+      <Route component={Business} path="/business" />
+      <Route component={Map} path="/map" />
+      <Route component={Board} path="/board" />
+      <Route component={Qanda} path="/qanda" />
+
       <Footer />
-    </>
+    </div>
   );
 }
 

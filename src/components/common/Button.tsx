@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const StyledButton = styled.div`
   display: inline-block;
@@ -15,6 +15,7 @@ const StyledButton = styled.div`
   &:hover {
     background: #868e96;
   }
+  margin-left: 10px;
 `;
 
 const Button = (props: any) => <StyledButton {...props} />;
