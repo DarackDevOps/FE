@@ -18,10 +18,12 @@ function App() {
         <Route component={Main} exact path="/" />
         <Route component={Business} path="/business" />
         <Route component={Map} path="/map" />
+
         <Switch>
         <Route component={Board} exact path="/board" />
         <Route component={Write} path="/board/write" />
         </Switch>
+        
         <Route component={Qanda} path="/qanda" />
         <Route Componet={Write} path="/board/write"/>
       </div>

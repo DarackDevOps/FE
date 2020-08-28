@@ -1,8 +1,5 @@
 import React from "react";
- import Write from './Write'
- import Post from './Post';
 import Posts from './Posts';
-import { Route} from "react-router-dom" 
 
 const Board = () => {
   // if(match.params.location = "/board") return <Posts/>
