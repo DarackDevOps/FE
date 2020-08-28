@@ -1,6 +1,12 @@
-import React from "react";
+import React from 'react';
+import styled from 'styled-components';
 
-const Qanda = () => {
-  return <div>Qanda</div>;
+const Image = styled.img`
+  width: 50%;
+  height: 75%;
+`;
+
+const Business = () => {
+  return <Image src={require('../images/5.jpg')} />;
 };
-export default Qanda;
+export default Business;

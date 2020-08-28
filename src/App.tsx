@@ -12,7 +12,7 @@ import Write from '../src/pages/Write';
 
 function App() {
   return (
-    <>
+    <div>
       <Header />
       <div>
         <Route component={Main} exact path="/" />
@@ -26,7 +26,7 @@ function App() {
         <Route Componet={Write} path="/board/write"/>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 
