@@ -6,7 +6,7 @@ const Image = styled.img`
   height: 75%;
 `;
 
-const Business = () => {
+const QandA = () => {
   return <Image src={require('../images/5.jpg')} />;
 };
-export default Business;
+export default QandA;

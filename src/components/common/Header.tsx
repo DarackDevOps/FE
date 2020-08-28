@@ -6,17 +6,18 @@ import { Link } from 'react-router-dom';
 
 //responsive 에서 반응형도 만들어보기
 const HeaderBlock = styled.div`
-  //position: fixed;
+  position: fixed;
   width: 100%;
   background: white;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 `;
 
 const Wrapper = styled(Responsive)`
-  height: 10rem;
+  height: 4rem;
   display: flex;
   align-items: center;
-
+  border: 1px solid red;
   // 일정비율로 거리 벌림
   justify-content: space-between;
 
@@ -31,7 +32,7 @@ const Wrapper = styled(Responsive)`
 
 //페이지의 콘텐츠가 6rem 아래 나타나도록 해주는 컴포넌트
 const Spacer = styled.div`
-  height: 6rem;
+  height: 4rem;
 `;
 
 //로고 링크
@@ -39,33 +40,42 @@ const Title = styled.li`
   list-style-type: none;
   margin: 0;
   padding: 0;
-  border: 1px solid red;
 `;
 
 //메인 메뉴
 const MainMenu = styled.ul`
   list-style-type: none;
-  padding: 20px;
-  float: left;
-  &:hover {
-    opacity: 1;
-    visibility: visible;
-  }
 `;
 const LiMain = styled.li`
   float: left;
-  padding: 30px;
-  border: 1px solid red;
+  margin-right: 30px;
+  padding: 5px;
+  border-radius: 35%;
+  position: relative;
+  &:hover {
+    color: gray;
+    background: black;
+    visibility: visible;
+  }
 `;
 //서브 메뉴
 const SubMenu = styled.ul`
   list-style-type: none;
-  padding: 20px;
-  float: left;
-  visibility: hidden;
-  opacity: 0;
+  position: absolute;
+  border: 1px solid red;
+  //display: none;
+  //visibility: hidden;
+  text-align: center;
 `;
-const LiSub = styled.li``;
+const LiSub = styled.li`
+  //display: none;
+  border-radius: 35%;
+  padding: 1px;
+  &:hover {
+    background: black;
+    color: gray;
+  }
+`;
 
 const Header = () => {
   return (
@@ -79,11 +89,13 @@ const Header = () => {
               </Link>
             </Title>
           </ul>
-
           <MainMenu>
             <LiMain>
               <Link to="/business">Business</Link>
               <SubMenu>
+                <LiSub>
+                  <Link to="/bespoke">sub1</Link>
+                </LiSub>
                 <LiSub>
                   <Link to="/SmartPhone">sub1</Link>
                 </LiSub>
