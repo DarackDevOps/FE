@@ -9,16 +9,18 @@ import Bespoke from '../images/MainImages/bespoke.jpg';
 import ChefCollection from '../images/MainImages/chefCollection.jpg';
 import Watch from '../images/MainImages/galaxyWatch.jpg';
 import Button from '../components/common/Button';
+import Button2 from '../components/common/Button2';
 import '../index.css';
 import Fade from 'react-reveal/Fade';
 import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const Photo = styled.img`
-  width: auto;
+  height: auto;
   // height: auto;
-  max-width: 100%;
+  width: 100%;
   // max-height: 300px;
-
   //margin-left: 20px;
 `;
 
@@ -28,79 +30,132 @@ const Block = styled.div`
   color: #ffffff;
   font-family: 'Alata', sans-serif;
 `;
-const Center = styled.div`
-  //text-align: center;
-`;
+
 const Wrap = styled.div`
   position: relative;
   padding: 2%;
 `;
+
 const InsideStyles = styled.div`
   position: absolute;
-  top: 50%;
-  left: 70%;
+  top: 55%;
+  left: 73%;
   transform: translate(-50%, -50%);
   text-align: left;
+  color: #ffffff;
 `;
+const InsideStyles2 = styled.div`
+  position: absolute;
+  top: 42%;
+  left: 23%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  color: #ffffff;
+`;
+const InsideStyles3 = styled.div`
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  text-align: center;
+`;
+const InsideStyles4 = styled.div`
+  position: absolute;
+  top: 40%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  text-align: right;
+`;
+
 const settings = {
   dots: true,
   infinite: true,
-  speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
+  autoplay: true,
+  speed: 3000,
+  autoplaySpeed: 5000,
+  cssEase: 'linear',
+  pauseOnHover: true,
+  appendDots: (dots) => (
+    <div
+      style={{
+        padding: '70px',
+      }}
+    >
+      <ul style={{ margin: '0px' }}> {dots} </ul>
+    </div>
+  ),
 };
+const StyledSlider = styled(Slider)`
+  .slick-slide div {
+    outline: none; // 슬라이드 클릭시 파란선을 제거하기 위해서 작성
+  }
+`;
 
 const Main = () => {
   return (
     <>
       <div>
-        <Slider settings>
+        <StyledSlider {...settings}>
           <Wrap>
             {/* <Photo src={Fold} /> */}
-            <InsideStyles>
-              <h2>당신에게</h2>
-              <h2>꼭 맞는 갤럭시는?</h2>
-              <p>성능도 크기도 다양한 갤럭시 스마트폰.</p>
-              <p>한눈에 쉽게 비교해보세요.</p>
-              <Button>시작하기</Button>
-            </InsideStyles>
+            <InsideStyles2>
+              <h1>
+                GALAXY Note20 |<br />
+                20 Ultra 5G 런칭
+              </h1>
+              <p>더 알아보기</p>
+              <Button2>구매혜택 보기</Button2>
+            </InsideStyles2>
             <Photo src={Ultra} />
           </Wrap>
           <Wrap>
             {/* <Photo src={Fold} /> */}
-            <InsideStyles>
-              <h2>당신에게</h2>
-              <h2>꼭 맞는 갤럭시는?</h2>
-              <p>성능도 크기도 다양한 갤럭시 스마트폰.</p>
-              <p>한눈에 쉽게 비교해보세요.</p>
-              <Button>시작하기</Button>
-            </InsideStyles>
+            <InsideStyles3>
+              <h1>Galaxy Watch3 런칭</h1>
+              <p>삼성닷컴 단독 혜택을 지금 바로 만나보세요</p>
+              <Button2>구매 혜택 보기</Button2>
+            </InsideStyles3>
             <Photo src={Watch} />
           </Wrap>
-
           <Wrap>
             {/* <Photo src={Fold} /> */}
             <InsideStyles>
-              <h2>당신에게</h2>
-              <h2>꼭 맞는 갤럭시는?</h2>
-              <p>성능도 크기도 다양한 갤럭시 스마트폰.</p>
-              <p>한눈에 쉽게 비교해보세요.</p>
-              <Button>시작하기</Button>
+              <h1>
+                2020 NEW
+                <br />
+                셰프컬렉션 런칭
+              </h1>
+              <p>
+                완벽을 소유하다
+                <br />
+                셰프컬렉션을 삼성닷컴 단독 혜택으로 만나보세요
+              </p>
+              <p>더 알아보기</p>
+              <Button2>구매 혜택 보기</Button2>
             </InsideStyles>
             <Photo src={ChefCollection} />
           </Wrap>
           <Wrap>
             {/* <Photo src={Fold} /> */}
-            <InsideStyles>
-              <h2>당신에게</h2>
-              <h2>꼭 맞는 갤럭시는?</h2>
-              <p>성능도 크기도 다양한 갤럭시 스마트폰.</p>
-              <p>한눈에 쉽게 비교해보세요.</p>
-              <Button>시작하기</Button>
-            </InsideStyles>
+            <InsideStyles4>
+              <h1>
+                2020 NEW
+                <br />
+                BESPOKE 런칭
+              </h1>
+              <p>
+                새로운 컬러의 BESPOKE 냉장고와
+                <br />
+                BESPOKE 식기세척기를 지금 바로 만나보세요
+              </p>
+              <Button>더 알아보기</Button>
+            </InsideStyles4>
             <Photo src={Bespoke} />
           </Wrap>
-        </Slider>
+        </StyledSlider>
       </div>
       <Parallax
         bgImage={back1}
