@@ -17,7 +17,7 @@ const Wrapper = styled(Responsive)`
   height: 4rem;
   display: flex;
   align-items: center;
-  border: 1px solid red;
+
   // 일정비율로 거리 벌림
   justify-content: space-between;
 
@@ -49,31 +49,13 @@ const MainMenu = styled.ul`
 const LiMain = styled.li`
   float: left;
   margin-right: 30px;
-  padding: 5px;
-  border-radius: 35%;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+
   position: relative;
   &:hover {
-    color: gray;
+    color: white;
     background: black;
-    visibility: visible;
-  }
-`;
-//서브 메뉴
-const SubMenu = styled.ul`
-  list-style-type: none;
-  position: absolute;
-  border: 1px solid red;
-  //display: none;
-  //visibility: hidden;
-  text-align: center;
-`;
-const LiSub = styled.li`
-  //display: none;
-  border-radius: 35%;
-  padding: 1px;
-  &:hover {
-    background: black;
-    color: gray;
   }
 `;
 
@@ -91,21 +73,10 @@ const Header = () => {
           </ul>
           <MainMenu>
             <LiMain>
-              <Link to="/business">Business</Link>
-              <SubMenu>
-                <LiSub>
-                  <Link to="/bespoke">sub1</Link>
-                </LiSub>
-                <LiSub>
-                  <Link to="/SmartPhone">sub1</Link>
-                </LiSub>
-                <LiSub>
-                  <Link to="/SmartPhone">sub1</Link>
-                </LiSub>
-                <LiSub>
-                  <Link to="/SmartPhone">sub1</Link>
-                </LiSub>
-              </SubMenu>
+              <Link to="/business">Smartphone</Link>
+            </LiMain>
+            <LiMain>
+              <Link to="/bespoke">Bespoke</Link>
             </LiMain>
             <LiMain>
               <Link to="/Map">Map</Link>
