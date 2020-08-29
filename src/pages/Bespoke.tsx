@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../components/common/Button';
+import Button3 from '../components/common/Button3';
 import Fade from 'react-reveal/Fade';
 
 import img1 from '../images/Bespoke/1.jpg';
@@ -112,7 +113,7 @@ const Bespoke = () => {
         <InsideStyles>
           <p>모두에겐 자신만의 BESPOKE가 있다</p>
           <h1>2020 NEW BESPOKE 런칭</h1>
-          <Button>조합하여 구매하기</Button>
+          <Button3>조합하여 구매하기</Button3>
         </InsideStyles>
       </Wrap>
 
