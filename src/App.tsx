@@ -8,19 +8,21 @@ import Map from './pages/Map';
 import Board from './pages/Board';
 import Qanda from './pages/Qanda';
 import Main from './pages/Main';
+import Bespoke from './pages/Bespoke';
 function App() {
   return (
-    <div>
+    <>
       <Header />
 
       <Route component={Main} exact path="/" />
       <Route component={Business} path="/business" />
+      <Route component={Bespoke} path="/bespoke" />
       <Route component={Map} path="/map" />
       <Route component={Board} path="/board" />
       <Route component={Qanda} path="/qanda" />
 
       <Footer />
-    </div>
+    </>
   );
 }
 
