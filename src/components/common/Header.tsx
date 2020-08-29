@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 //responsive 에서 반응형도 만들어보기
 const HeaderBlock = styled.div`
-  position: fixed;
+  //position: fixed;
   width: 100%;
   background: white;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -93,7 +93,7 @@ const Header = () => {
           </div>
         </Wrapper>
       </HeaderBlock>
-      <Spacer />
+      {/* <Spacer /> */}
     </>
   );
 };
