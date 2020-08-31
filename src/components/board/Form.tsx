@@ -99,7 +99,6 @@ const Form = () => {
     console.log(event.target.files[0]);
   };
   const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
-    event.preventDefault();
     console.log('contents');
     console.log('check form:', form);
 
@@ -123,7 +122,7 @@ const Form = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} encType="multipart/form-data">
+    <form onSubmit={handleSubmit} encType="multipart/form-data" action="/board">
       <Div>
         <Label>제목</Label>
         <Input name="title" value={title} onChange={handleChange} />
