@@ -4,7 +4,9 @@ const dbConfig = require('../config/dbConfig');
 const connection = mysql.createConnection(dbConfig);
 const router = express.Router();
 const multer = require('multer');
+const dateFormat = require('dateformat');
 const path = require('path');
+
 connection.connect();
 
 const storage = multer.diskStorage({
@@ -56,37 +58,41 @@ router.post('/board/write', upload.single('imgFile'), function (req, res) {
     }`,
   );
 
+
   var title = req.body.title;
   var user_id = req.body.userID;
   var visit_center = req.body.visit_center;
   var contents = req.body.contents;
-  var date = '2020-08-27';
+  var date = dateFormat(new Date(), "isoDate");
+  var image_file;
 
   if (title && user_id && visit_center && contents) {
-    connection.query(
-      "INSERT INTO board (title, user_id, visit_center, contents, date) VALUES ('" +
-        title +
-        "', '" +
-        user_id +
-        "', '" +
-        visit_center +
-        "', '" +
-        contents +
-        "', '" +
-        date +
-        "' )",
-      function (err, result, fields) {
-        if (err) {
-          res.send('err : ' + err);
-        } else {
-          console.log(title + ',' + visit_center);
-          console.log('Result : ' + result);
-          console.log('Fiedls : ' + fields);
-          res.send('sucess create');
+        image_file =  req.file ? req.file.filename : null;
+
+        connection.query(
+          "INSERT INTO board (title, user_id, visit_center, contents, image_file, date) VALUES ('" +
+            title +
+            "', '" +
+            user_id +
+            "', '" +
+            visit_center +
+            "', '" +
+            contents +
+            "', '" +
+            image_file +
+            "', '" +
+            date +
+            "' )",
+          function (err, result, fields) {
+            if (err) {
+              res.send('err : ' + err);
+            } else {
+              console.log(title + ',' + visit_center);
+              res.send('sucess create');
+              }
+            },
+          );
         }
-      },
-    );
-  }
-});
+    });
 
 module.exports = router;
