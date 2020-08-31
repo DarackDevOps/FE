@@ -93,17 +93,9 @@ const StyledSlider = styled(Slider)`
     outline: none; // 슬라이드 클릭시 파란선을 제거하기 위해서 작성
   }
 `;
-const Block = styled.div`
-  text-align: center;
-  padding: 40px;
-  color: #ffffff;
-  font-family: 'Alata', sans-serif;
-`;
-
 const Main = () => {
   return (
     <>
-<<<<<<< HEAD
       <div>
         <StyledSlider {...settings}>
           <Wrap>
@@ -164,21 +156,6 @@ const Main = () => {
           </Wrap>
         </StyledSlider>
       </div>
-=======
-      {/* <CarouselProvider
-        naturalSlideHeight={125}
-        naturalSlideWidth={100}
-        totalSlides={3}
-      >
-        <Slider>
-          <Slide index={0}>first slide.</Slide>
-          <Slide index={1}>first slide.</Slide>
-          <Slide index={2}>first slide.</Slide>
-        </Slider>
-        <ButtonBack>Back</ButtonBack>
-        <ButtonNext>Next</ButtonNext>
-      </CarouselProvider> */}
->>>>>>> 62389cf3c36ac19a63875e22de1b367f6e91f4a2
       <Parallax
         bgImage={back1}
         //시차효과강도
