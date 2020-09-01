@@ -1,14 +1,15 @@
-import React from "react";
-import styled from "styled-components";
-import Button from "../components/common/Button"
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import Button from '../components/common/Button';
 import Header from '../components/board/Header';
+import axios from 'axios';
 
 const Table = styled.table`
-    display: block;
-    margin: 1% 23%;
-    width: 960px;
-    border-top: 1px solid #444444;
-    border-collapse: collapse;
+  display: block;
+  margin: 1% 23%;
+  width: 960px;
+  border-top: 1px solid #444444;
+  border-collapse: collapse;
 `;
 
 // const Th = styled.th`
@@ -19,52 +20,86 @@ const Table = styled.table`
 // `;
 
 const Td = styled.td<{ width: string }>`
-    width: ${ props => props.width};
-    text-align: left;
-    padding-left: 1%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    border-bottom: 1px solid #444444;
+  width: ${(props) => props.width};
+  text-align: left;
+  padding-left: 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  border-bottom: 1px solid #444444;
 `;
 
 const ContentTd = styled(Td)`
-    padding-top: 2%;
-    padding-bottom: 5%;
-`; 
-
-const ListButton = styled(Button)`
-    margin-left: 75%;
+  padding-top: 2%;
+  padding-bottom: 5%;
 `;
 
-const Post = () => {
-    return(
-        <div>
-            <Header />
-            <Table>
-                    <Td width="120">제목</Td>
-                    <Td width="840" colSpan={3}>휴대폰 필름교체</Td>
-                <tbody>
-                    <tr>
-                        <Td width="120">날짜</Td>
-                        <Td width="360">2018-02-10</Td>
-                        <Td width="120">방문 센터</Td>
-                        <Td width="360">중대전센터</Td>
-                    </tr>
-                </tbody>
-                
-                <tbody>
-                    <tr>
-                        <ContentTd width="960" colSpan={4}>
-                            <div>
-                            휴대폰 필름을 몇번 씩 교체하러 방문했는데 폰기종은 갤럭시s8+ 입니다.
-                            </div>
-                        </ContentTd>
-                    </tr>
-                </tbody>
-            </Table>
-            <ListButton>목록</ListButton>
-        </div>
-    );
-}
+const ListButton = styled(Button)`
+  margin-left: 75%;
+`;
+
+type SetData = {
+  title: string;
+  visit_center: string;
+  contents: string;
+  userID: string;
+  imgFile: any;
+  date: string;
+};
+
+const Post = ({ match }) => {
+  const [post, setPost] = useState<SetData>({
+    title: '',
+    visit_center: '',
+    contents: '',
+    userID: '',
+    imgFile: '',
+    date: '',
+  });
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      axios
+        .get('http://localhost:3001/board/post', {
+          params: {
+            pid: match.params.pid,
+          },
+        })
+        .then((response) => {
+          setPost(response.data);
+        });
+    };
+
+    fetchPost();
+  }, []);
+
+  return (
+    <div>
+      <Header />
+      <Table>
+        <Td width="120">제목</Td>
+        <Td width="840" colSpan={3}>
+          {post.title}
+        </Td>
+        <tbody>
+          <tr>
+            <Td width="120">날짜</Td>
+            <Td width="360">{post.date}</Td>
+            <Td width="120">방문 센터</Td>
+            <Td width="360">{post.visit_center}</Td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <ContentTd width="960" colSpan={4}>
+              <div>{post.contents}</div>
+            </ContentTd>
+          </tr>
+        </tbody>
+      </Table>
+      <ListButton>목록</ListButton>
+    </div>
+  );
+};
 
 export default Post;
