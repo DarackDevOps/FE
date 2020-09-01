@@ -103,13 +103,13 @@ const Form = () => {
     console.log('check form:', form);
 
     const formData = new FormData();
-    formData.append('title', form.title);
-    formData.append('userID', form.userID);
-    formData.append('visit_center', form.visit_center);
-    formData.append('contents', form.contents);
-    formData.append('imgFile', form.imgFile);
+    formData.append('title', title);
+    formData.append('userID', userID);
+    formData.append('visit_center', visit_center);
+    formData.append('contents', contents);
+    formData.append('imgFile', imgFile);
 
-    fetch('http://localhost:3001/dbTest/board/write', {
+    fetch('http://localhost:3001/board/write', {
       method: 'POST',
       redirect: 'follow',
       body: formData,

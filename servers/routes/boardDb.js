@@ -44,7 +44,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post('/board/write', upload.single('imgFile'), function (req, res) {
+router.post('/write', upload.single('imgFile'), function (req, res) {
   // + file 정보 출력
   console.log(req.file);
 
@@ -58,41 +58,40 @@ router.post('/board/write', upload.single('imgFile'), function (req, res) {
     }`,
   );
 
-
   var title = req.body.title;
   var user_id = req.body.userID;
   var visit_center = req.body.visit_center;
   var contents = req.body.contents;
-  var date = dateFormat(new Date(), "isoDate");
+  var date = dateFormat(new Date(), 'isoDate');
   var image_file;
 
   if (title && user_id && visit_center && contents) {
-        image_file =  req.file ? req.file.filename : null;
+    image_file = req.file ? req.file.filename : null;
 
-        connection.query(
-          "INSERT INTO board (title, user_id, visit_center, contents, image_file, date) VALUES ('" +
-            title +
-            "', '" +
-            user_id +
-            "', '" +
-            visit_center +
-            "', '" +
-            contents +
-            "', '" +
-            image_file +
-            "', '" +
-            date +
-            "' )",
-          function (err, result, fields) {
-            if (err) {
-              res.send('err : ' + err);
-            } else {
-              console.log(title + ',' + visit_center);
-              res.send('sucess create');
-              }
-            },
-          );
+    connection.query(
+      "INSERT INTO board (title, user_id, visit_center, contents, image_file, date) VALUES ('" +
+        title +
+        "', '" +
+        user_id +
+        "', '" +
+        visit_center +
+        "', '" +
+        contents +
+        "', '" +
+        image_file +
+        "', '" +
+        date +
+        "' )",
+      function (err, result, fields) {
+        if (err) {
+          res.send('err : ' + err);
+        } else {
+          console.log(title + ',' + visit_center);
+          res.send('sucess create');
         }
-    });
+      },
+    );
+  }
+});
 
 module.exports = router;

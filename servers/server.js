@@ -1,11 +1,14 @@
 const express = require('express');
 
 const bodyParser = require('body-parser');
-const index = require('./routes/index');
-const board = require('./routes/boardDb');
+// const index = require('./routes/index');
+// const board = require('./routes/boardDb');
+
 const port = process.env.PORT || 3001;
 
 const app = express();
+
+const routes = require('./routes');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -19,8 +22,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use('/api', index);
-app.use('/dbTest', board);
+app.use('/', routes);
 
 app.listen(port, () => {
   console.log(`express is running on ${port}`);
