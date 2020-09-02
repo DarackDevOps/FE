@@ -1,7 +1,9 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 const mysql = require('mysql2');
 const dbConfig = require('../config/dbConfig');
+const { runInNewContext } = require('vm');
 const connection = mysql.createConnection(dbConfig);
 const router = express.Router();
 
@@ -22,8 +24,32 @@ router.get('/post', (req, res) => {
         responseData.user_id = rows[0].user_id;
         responseData.visit_center = rows[0].visit_center;
         responseData.contents = rows[0].contents;
-        responseData.image_file = rows[0].image_file;
         responseData.date = rows[0].date;
+
+        fs.readdir(path.join('../FE/uploads'), 'utf8', function (err, files) {
+          if (err) {
+            res.status(500);
+            throw err;
+          } else console.log(files);
+
+          if (rows[0].image_file === null || rows[0].image_file === 'null') {
+            console.log('값없음');
+          } else {
+            fs.readFile(
+              path.join('../FE/uploads/', rows[0].image_file),
+              function (err, data) {
+                console.log('a');
+                if (err) {
+                  res.status(500);
+                  throw err;
+                } else {
+                  //res.writeHead(200, { 'Content-type': 'image/jpeg' });
+                  res.end(data);
+                }
+              },
+            );
+          }
+        });
       } else {
         responseData.name = 'none';
         responseData.phone = 'none';
@@ -31,10 +57,9 @@ router.get('/post', (req, res) => {
         responseData.user_id = 'none';
         responseData.visit_center = 'none';
         responseData.contents = 'none';
-        responseData.image_file = 'none';
         responseData.date = 'none';
       }
-      res.json(responseData);
+      res.send(responseData);
     },
   );
 });
