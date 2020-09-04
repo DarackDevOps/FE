@@ -8,9 +8,9 @@ import { Link } from 'react-router-dom';
 const HeaderBlock = styled.div`
   //position: fixed;
   width: 100%;
-  //display: flex;
   background: white;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 `;
 
 const Wrapper = styled(Responsive)`
@@ -25,20 +25,14 @@ const Wrapper = styled(Responsive)`
     font-size: 1.125rem;
     font-weight: 600;
     letter-spacing: 2px;
-    //float: left;
-  }
-  .menuBar {
-    //float: left;
-    //margin-right: 5rem;
   }
   .right {
-    //float: right;
   }
 `;
 
 //페이지의 콘텐츠가 6rem 아래 나타나도록 해주는 컴포넌트
 const Spacer = styled.div`
-  height: 6rem;
+  height: 4rem;
 `;
 
 //로고 링크
@@ -47,11 +41,22 @@ const Title = styled.li`
   margin: 0;
   padding: 0;
 `;
-//메뉴 링크
-const Menu = styled.li`
+
+//메인 메뉴
+const MainMenu = styled.ul`
   list-style-type: none;
-  padding: 20px;
+`;
+const LiMain = styled.li`
   float: left;
+  margin-right: 30px;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+
+  position: relative;
+  &:hover {
+    color: white;
+    background: black;
+  }
 `;
 
 const Header = () => {
@@ -59,15 +64,6 @@ const Header = () => {
     <>
       <HeaderBlock>
         <Wrapper>
-          {/* <div className="logo">
-            <ul>
-              <Title>
-                <Link to="/">SAMSUNG - SERVICE CENTER</Link>
-              </Title>
-            </ul>
-            <div>SAMSUNG - SERVICE CENTER</div>
-          </div> */}
-
           <ul className="logo">
             <Title>
               <Link to="/">
@@ -75,21 +71,23 @@ const Header = () => {
               </Link>
             </Title>
           </ul>
-
-          <ul className="menuBar">
-            <Menu>
-              <Link to="/business">Business</Link>
-            </Menu>
-            <Menu>
+          <MainMenu>
+            <LiMain>
+              <Link to="/business">Smartphone</Link>
+            </LiMain>
+            <LiMain>
+              <Link to="/bespoke">Bespoke</Link>
+            </LiMain>
+            <LiMain>
               <Link to="/Map">Map</Link>
-            </Menu>
-            <Menu>
+            </LiMain>
+            <LiMain>
               <Link to="/Board">Board</Link>
-            </Menu>
-            <Menu>
+            </LiMain>
+            <LiMain>
               <Link to="/Qanda">Q&A</Link>
-            </Menu>
-          </ul>
+            </LiMain>
+          </MainMenu>
           <div className="right">
             <Button>로그인</Button>
           </div>
