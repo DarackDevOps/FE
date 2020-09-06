@@ -42,6 +42,7 @@ type SetData = {
   visit_center: string;
   contents: string;
   userID: string;
+  image_file: string;
   date: string;
 };
 
@@ -51,10 +52,9 @@ const Post = ({ match }) => {
     visit_center: '',
     contents: '',
     userID: '',
+    image_file: '',
     date: '',
   });
-
-  const [url, setUrl] = useState('');
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -65,7 +65,6 @@ const Post = ({ match }) => {
           },
         })
         .then((response) => {
-          setUrl(response.request.responseURL);
           setPost(response.data);
         });
     };
@@ -101,7 +100,7 @@ const Post = ({ match }) => {
         <tbody>
           <tr>
             <ContentTd width="960" colSpan={4}>
-              <img src={url} />
+              <img src={post.image_file} />
             </ContentTd>
           </tr>
         </tbody>

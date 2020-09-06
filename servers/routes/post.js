@@ -3,7 +3,6 @@ const path = require('path');
 const fs = require('fs');
 const mysql = require('mysql2');
 const dbConfig = require('../config/dbConfig');
-const { runInNewContext } = require('vm');
 const connection = mysql.createConnection(dbConfig);
 const router = express.Router();
 
@@ -26,30 +25,12 @@ router.get('/post', (req, res) => {
         responseData.contents = rows[0].contents;
         responseData.date = rows[0].date;
 
-        fs.readdir(path.join('../FE/uploads'), 'utf8', function (err, files) {
-          if (err) {
-            res.status(500);
-            throw err;
-          } else console.log(files);
-
-          if (rows[0].image_file === null || rows[0].image_file === 'null') {
-            console.log('값없음');
-          } else {
-            fs.readFile(
-              path.join('../FE/uploads/', rows[0].image_file),
-              function (err, data) {
-                console.log('a');
-                if (err) {
-                  res.status(500);
-                  throw err;
-                } else {
-                  //res.writeHead(200, { 'Content-type': 'image/jpeg' });
-                  res.end(data);
-                }
-              },
-            );
-          }
-        });
+        if (rows[0].image_file === null || rows[0].image_file === 'null') {
+          responseData.image_file = 'none';
+        } else {
+          responseData.image_file =
+            'http://localhost:3001/board/post/image/' + pid;
+        }
       } else {
         responseData.name = 'none';
         responseData.phone = 'none';
@@ -60,6 +41,37 @@ router.get('/post', (req, res) => {
         responseData.date = 'none';
       }
       res.send(responseData);
+    },
+  );
+});
+
+router.get('/post/image/:pid', (req, res) => {
+  const pid = req.params.pid;
+
+  const query = connection.query(
+    `SELECT image_file FROM board WHERE pid = ?`,
+    [pid],
+    (err, rows) => {
+      if (err) throw err;
+      fs.readdir(path.join('../FE/uploads'), 'utf8', function (err, files) {
+        if (err) {
+          res.status(500);
+          throw err;
+        }
+        // res.sendFile(path.join(__dirname, '../../uploads/', rows[0].image_file))
+        fs.readFile(path.join('../FE/uploads/', rows[0].image_file), function (
+          err,
+          data,
+        ) {
+          if (err) {
+            res.status(500);
+            throw err;
+          } else {
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(data);
+          }
+        });
+      });
     },
   );
 });
