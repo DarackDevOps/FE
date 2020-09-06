@@ -10,6 +10,7 @@ import Qanda from './pages/Qanda';
 import Main from './pages/Main';
 import Bespoke from './pages/Bespoke';
 import Write from '../src/pages/Write';
+import Signin from './pages/Signin';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route component={Business} path="/business" />
         <Route component={Map} path="/map" />
         <Route component={Bespoke} path="/bespoke" />
+        <Route component={Signin} path="/signin" />
         <Switch>
           <Route component={Board} exact path="/board" />
           <Route component={Write} path="/board/write" />

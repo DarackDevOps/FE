@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from '../components/common/Button';
+// import Button from '../components/common/Button';
 import Button3 from '../components/common/Button3';
 import Fade from 'react-reveal/Fade';
 
