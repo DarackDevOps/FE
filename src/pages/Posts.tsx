@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Button from '../components/common/Button';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Header from '../components/board/Header';
 import Lists from '../components/board/aPostList';
 import axios from 'axios';
@@ -30,24 +30,29 @@ const Posts = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1); //현재 보는 페이지
-  const [postsPerPage] = useState(5); //얼마나 표시해주고 싶은지
+
+  const url = 'http://localhost:3001/board/posts/' + currentPage;
 
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
-      const res = await axios.get('http://localhost:3001/board/posts');
-      setPosts(res.data);
+      await fetch(url, {
+        method: 'GET',
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setPosts(data);
+        });
+
       setLoading(false);
     };
-
     fetchPosts();
-  }, []);
+  }, [currentPage]);
 
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  const paginate = (PageNumber) => {
+    setCurrentPage(PageNumber);
+  };
 
-  const paginate = (PageNumber) => setCurrentPage(PageNumber);
   return (
     <div>
       <Header />
@@ -63,13 +68,9 @@ const Posts = () => {
             <Th width="120px">날짜일</Th>
           </tr>
         </thead>
-        <Lists posts={currentPosts} loading={loading} />
+        <Lists posts={posts} loading={loading} />
       </Table>
-      <PageNumber
-        postsPerPage={postsPerPage}
-        totalPosts={posts.length}
-        paginate={paginate}
-      />
+      <PageNumber paginate={paginate} />
     </div>
   );
 };

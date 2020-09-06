@@ -98,7 +98,7 @@ const Form = () => {
     });
     console.log(event.target.files[0]);
   };
-  const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
     console.log('contents');
     console.log('check form:', form);
 
@@ -109,7 +109,7 @@ const Form = () => {
     formData.append('contents', contents);
     formData.append('imgFile', imgFile);
 
-    fetch('http://localhost:3001/board/write', {
+    await fetch('http://localhost:3001/board/write', {
       method: 'POST',
       redirect: 'follow',
       body: formData,
