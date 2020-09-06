@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const PageNumbers = styled.div`
@@ -13,17 +13,23 @@ const PageNumber = styled.div<{ color: string }>`
   color: ${(props) => props.color || 'black'};
 `;
 
-const Apagenumber = ({ postsPerPage, totalPosts, paginate }) => {
-  const pageNum: number[] = [];
+const Apagenumber = ({ paginate }) => {
+  const [pageNum, setPageNum] = useState([]);
   const [font, setFont] = useState('black');
 
   const changeColor = () => {
     setFont('red');
   };
 
-  for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
-    pageNum.push(i);
-  }
+  useEffect(() => {
+    fetch(`http://localhost:3001/board/totalPosts`, {
+      method: 'GET',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setPageNum(data);
+      });
+  }, [pageNum]);
 
   return (
     <nav>
