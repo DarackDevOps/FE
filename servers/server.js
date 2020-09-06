@@ -1,5 +1,5 @@
 const express = require('express');
-
+const test = require('./routes/dbTest');
 const bodyParser = require('body-parser');
 const index = require('./routes/index');
 const board = require('./routes/boardDb');
@@ -21,6 +21,7 @@ app.use(function (req, res, next) {
 
 app.use('/api', index);
 app.use('/dbTest', board);
+app.use('/test', test);
 
 app.listen(port, () => {
   console.log(`express is running on ${port}`);
