@@ -9,8 +9,8 @@ import Board from './pages/Board';
 import Qanda from './pages/Qanda';
 import Main from './pages/Main';
 import Bespoke from './pages/Bespoke';
-import Write from '../src/pages/Write';
-import Signin from './pages/Signin';
+import Write from './pages/Write';
+import Post from './pages/Post';
 
 function App() {
   return (
@@ -22,14 +22,13 @@ function App() {
         <Route component={Business} path="/business" />
         <Route component={Map} path="/map" />
         <Route component={Bespoke} path="/bespoke" />
-        <Route component={Signin} path="/signin" />
+
         <Switch>
           <Route component={Board} exact path="/board" />
           <Route component={Write} path="/board/write" />
+          <Route component={Post} path="/board/post/:pid" />
         </Switch>
-
         <Route component={Qanda} path="/qanda" />
-        <Route Componet={Write} path="/board/write" />
       </div>
       <Footer />
     </div>

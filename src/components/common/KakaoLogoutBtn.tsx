@@ -1,5 +1,4 @@
 import React from 'react';
-import KaKaoLogin from 'react-kakao-login';
 import btn from './kakao_login_medium_narrow.png';
 import KakaoLogin from 'react-kakao-login';
 
