@@ -65,6 +65,7 @@ type SetData = {
   visit_center: string;
   contents: string;
   userID: string;
+  imgFile: any;
 };
 
 const Form = () => {
@@ -73,9 +74,10 @@ const Form = () => {
     visit_center: '',
     contents: '',
     userID: '',
+    imgFile: '',
   });
 
-  const { title, visit_center, contents, userID } = form;
+  const { title, visit_center, contents, userID, imgFile } = form;
 
   const handleChange = (
     event:
@@ -88,25 +90,29 @@ const Form = () => {
       [name]: value,
     });
   };
-
-  const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
-    //  event.preventDefault()
+  const fileHandleChange = (event: any) => {
+    const name = event.target.name;
+    setForm({
+      ...form,
+      [name]: event.target.files[0],
+    });
+    console.log(event.target.files[0]);
+  };
+  const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
     console.log('contents');
-    console.log('check ' + contents);
-    console.log('check ' + form.title);
-    fetch('http://localhost:3001/dbTest/board/write', {
+    console.log('check form:', form);
+
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('userID', userID);
+    formData.append('visit_center', visit_center);
+    formData.append('contents', contents);
+    formData.append('imgFile', imgFile);
+
+    await fetch('http://localhost:3001/board/write', {
       method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       redirect: 'follow',
-      body: JSON.stringify({
-        title: title,
-        userID: userID,
-        visit_center: visit_center,
-        contents: contents,
-      }),
+      body: formData,
     })
       .then((response) => {
         response.json();
@@ -116,7 +122,7 @@ const Form = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} action="/board">
+    <form onSubmit={handleSubmit} encType="multipart/form-data" action="/board">
       <Div>
         <Label>제목</Label>
         <Input name="title" value={title} onChange={handleChange} />
@@ -140,7 +146,12 @@ const Form = () => {
         ></WriteInput>
       </Div>
       <Div>
-        <Input type="file"></Input>
+        <Input
+          type="file"
+          accept="image/*"
+          name="imgFile"
+          onChange={fileHandleChange}
+        ></Input>
       </Div>
       <ButtonDiv>
         <BButton>
