@@ -2,11 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import Responsive from './Responsive';
 import Button from './Button';
+// import KakaoButton from './kakao_login_medium_narrow.png';
 import { Link } from 'react-router-dom';
+import KakaoLoginBtn from './KakaoLoginBtn';
+import KakaoLogoutBtn from './KakaoLogoutBtn';
 
 //responsive 에서 반응형도 만들어보기
 const HeaderBlock = styled.div`
-  //position: fixed;
+  position: fixed;
   width: 100%;
   background: white;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -89,11 +92,12 @@ const Header = () => {
             </LiMain>
           </MainMenu>
           <div className="right">
-            <Button>로그인</Button>
+            <KakaoLoginBtn />
+            <KakaoLogoutBtn />
           </div>
         </Wrapper>
       </HeaderBlock>
-      {/* <Spacer /> */}
+      <Spacer />
     </>
   );
 };

@@ -22,6 +22,7 @@ function App() {
         <Route component={Business} path="/business" />
         <Route component={Map} path="/map" />
         <Route component={Bespoke} path="/bespoke" />
+
         <Switch>
           <Route component={Board} exact path="/board" />
           <Route component={Write} path="/board/write" />

@@ -9,21 +9,21 @@ connection.connect();
 router.get('/', (req, res) => {
   res.send(`<h1>DB testing Page</h1>`);
 });
-router.get('/userInfo/:name', (req, res) => {
-  const name = req.params.name;
+router.get('/userInfo/:ID', (req, res) => {
+  const ID = req.params.ID;
   const responseData = {};
 
   const query = connection.query(
-    `SELECT * FROM users WHERE user_name = ?`,
-    [name],
+    `SELECT * FROM table_test WHERE ID = ?`,
+    [ID],
     (err, rows) => {
       if (err) throw err;
       if (rows[0]) {
-        responseData.name = rows[0].user_name;
-        responseData.phone = rows[0].user_phone;
+        responseData.ID = rows[0].ID;
+        responseData.Name = rows[0].Name;
       } else {
-        responseData.name = 'none';
-        responseData.phone = 'none';
+        responseData.ID = 'none';
+        responseData.Name = 'none';
       }
       res.json(responseData);
     },
