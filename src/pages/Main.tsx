@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Parallax } from 'react-parallax';
 import back1 from '../images/MainImages/back1.jpg';
-import back2 from '../images/MainImages/back2.jpg';
+// import back2 from '../images/MainImages/back2.jpg';
 
 import Ultra from '../images/MainImages/galaxyUltra.jpg';
 import Bespoke from '../images/MainImages/bespoke.jpg';
