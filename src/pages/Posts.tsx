@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Header from '../components/board/Header';
 import Lists from '../components/board/aPostList';
 import axios from 'axios';
-import PageNumber from '../components/board/ApageNumber';
+import PageNumber from '../components/board/aPageNumber';
 
 const Table = styled.table`
   display: block;

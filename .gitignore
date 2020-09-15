@@ -25,3 +25,4 @@ yarn-error.log*
 
 servers/config/dbConfig.js
 src/data
+servers/routes/svc.js
