@@ -1,9 +1,5 @@
 const express = require('express');
-
 const bodyParser = require('body-parser');
-// const index = require('./routes/index');
-// const dbTest = require('./routes/dbTest');
-//const svc = require('./routes/svc');
 // const index = require('./routes/index');
 // const board = require('./routes/boardDb');
 

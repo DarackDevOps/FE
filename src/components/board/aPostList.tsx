@@ -33,9 +33,4 @@ const aPostList = ({ posts, loading }) => {
   );
 };
 
-{
-  /* <Td width="800px">휴대폰 필름 교체</Td>
-        <Td width="120px">2,810</Td>
-        <Td width="120px">2020-08-24</Td> */
-}
 export default aPostList;
