@@ -28,18 +28,18 @@ router.get('/posts/:pageNumber', function (req, res) {
   });
 });
 
-router.get('/totalPosts', function (req, res) {
-  const pageNum = [];
-  const limit = 5;
-  var sql = 'SELECT pid FROM board ORDER BY pid DESC LIMIT 1';
+// router.get('/totalPosts', function (req, res) {
+//   const pageNum = [];
+//   const limit = 5;
+//   var sql = 'SELECT pid FROM board ORDER BY pid DESC LIMIT 1';
 
-  connection.query(sql, (err, result, field) => {
-    for (let i = 1; i <= Math.ceil(result[0].pid / limit); i++) {
-      pageNum.push(i);
-    }
+//   connection.query(sql, (err, result, field) => {
+//     for (let i = 1; i <= Math.ceil(result[0].pid / limit); i++) {
+//       pageNum.push(i);
+//     }
 
-    res.send(pageNum);
-  });
-});
+//     res.send(pageNum);
+//   });
+// });
 
 module.exports = router;

@@ -21,14 +21,20 @@ const Apagenumber = ({ paginate }) => {
     setFont('red');
   };
 
+  const query = `
+  query {
+    getTotalPosts
+  }
+`;
+
   useEffect(() => {
-    fetch(`http://localhost:3001/board/totalPosts`, {
-      method: 'GET',
+    fetch(`http://localhost:8000/graphql`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query }),
     })
       .then((res) => res.json())
-      .then((data) => {
-        setPageNum(data);
-      });
+      .then(({ data }) => setPageNum(data.getTotalPosts));
   }, [pageNum]);
 
   return (

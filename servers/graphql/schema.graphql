@@ -1,0 +1,14 @@
+# type Board {
+#   pid: Int!
+#   title: String!
+#   user_id: String!
+#   visit_center: String!
+#   visit_number: Int!
+#   image_file: String
+#   contents: String!
+#   data: Date!
+# }
+
+type Query {
+  getTotalPosts: [Int]!
+}
