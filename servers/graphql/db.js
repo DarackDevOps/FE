@@ -24,12 +24,14 @@ const getPostsNumber = async () => {
     'SELECT pid FROM board ORDER BY pid DESC LIMIT 1',
   );
 
-  for (let i = 1; i < Math.ceil(latest_pid[0][0].pid / 5); i++) {
+  for (let i = 1; i <= Math.ceil(latest_pid[0][0].pid / 10); i++) {
     pageNum.push(i);
   }
 
   connection.release();
   return pageNum;
 };
+
+const addVisitNumber = () => {};
 
 module.exports = getPostsNumber;

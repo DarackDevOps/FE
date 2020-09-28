@@ -7,13 +7,13 @@ const router = express.Router();
 
 connection.connect();
 
-router.get('/posts/:pageNumber', function (req, res) {
-  const limit = 5;
-  const page = parseInt(req.params.pageNumber);
-  console.log(page);
+router.get('/posts', function (req, res) {
+  const limit = parseInt(req.query.limit);
+  const page = parseInt(req.query.pageNumber);
 
   const offset = (page - 1) * limit;
-  console.log(offset);
+
+  //let date_format = date_format(date, '%Y-%m-%d');
 
   var sql =
     'SELECT pid, title, date, visit_number FROM board ORDER BY pid DESC LIMIT ' +
@@ -21,9 +21,8 @@ router.get('/posts/:pageNumber', function (req, res) {
     ' OFFSET ' +
     offset;
 
-  console.log(sql);
-
   connection.query(sql, (err, results, field) => {
+    console.log(results);
     res.json(results);
   });
 });

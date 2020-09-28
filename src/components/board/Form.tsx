@@ -99,6 +99,8 @@ const Form = () => {
     console.log(event.target.files[0]);
   };
   const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
     console.log('contents');
     console.log('check form:', form);
 
@@ -119,10 +121,12 @@ const Form = () => {
       })
       .then((data) => console.log(data))
       .catch((err) => console.info(err));
+
+    setTimeout("location.href='/board'", 100);
   };
 
   return (
-    <form onSubmit={handleSubmit} encType="multipart/form-data" action="/board">
+    <form onSubmit={handleSubmit} encType="multipart/form-data">
       <Div>
         <Label>제목</Label>
         <Input name="title" value={title} onChange={handleChange} />

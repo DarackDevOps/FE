@@ -62,7 +62,8 @@ router.post('/write', upload.single('imgFile'), function (req, res) {
   var user_id = req.body.userID;
   var visit_center = req.body.visit_center;
   var contents = req.body.contents;
-  var date = dateFormat(new Date(), 'isoDate');
+  var date = getFormatDate(new Date());
+  console.log(date);
   var image_file;
 
   if (title && user_id && visit_center && contents) {
@@ -86,12 +87,20 @@ router.post('/write', upload.single('imgFile'), function (req, res) {
         if (err) {
           res.send('err : ' + err);
         } else {
-          console.log(title + ',' + visit_center);
           res.send('sucess create');
         }
       },
     );
   }
 });
+
+function getFormatDate(date) {
+  let year = date.getFullYear();
+  let month = 1 + date.getMonth();
+  month = month >= 10 ? month : '0' + month;
+  let day = date.getDate();
+  day = day >= 10 ? day : '0' + day;
+  return year + '-' + month + '-' + day;
+}
 
 module.exports = router;

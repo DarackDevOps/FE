@@ -15,6 +15,7 @@ const PageNumber = styled.div<{ color: string }>`
 
 const Apagenumber = ({ paginate }) => {
   const [pageNum, setPageNum] = useState([]);
+  // const [postPageNum, setPostPageNum] = useState([]);
   const [font, setFont] = useState('black');
 
   const changeColor = () => {
@@ -34,8 +35,10 @@ const Apagenumber = ({ paginate }) => {
       body: JSON.stringify({ query }),
     })
       .then((res) => res.json())
-      .then(({ data }) => setPageNum(data.getTotalPosts));
-  }, [pageNum]);
+      .then(({ data }) => {
+        setPageNum(data.getTotalPosts);
+      });
+  }, [pageNum.length]);
 
   return (
     <nav>

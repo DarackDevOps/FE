@@ -28,9 +28,10 @@ const WriteButton = styled(Button)`
 const Posts = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1); //현재 보는 페이지
+  const [pageNumber, setPageNumber] = useState(1); //현재 보는 페이지
+  const limit = 10;
 
-  const url = 'http://localhost:3001/board/posts/' + currentPage;
+  const url = `http://localhost:3001/board/posts?pageNumber=${pageNumber}&limit=${limit}`;
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -46,10 +47,10 @@ const Posts = () => {
       setLoading(false);
     };
     fetchPosts();
-  }, [currentPage]);
+  }, [pageNumber]);
 
   const paginate = (PageNumber) => {
-    setCurrentPage(PageNumber);
+    setPageNumber(PageNumber);
   };
 
   return (

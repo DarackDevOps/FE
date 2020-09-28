@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { randomFillSync } from 'crypto';
 
 const Td = styled.td<{ width: string }>`
   width: ${(props) => props.width};
@@ -25,8 +24,8 @@ const aPostList = ({ posts, loading }) => {
           <Td width="800px">
             <Link to={`/board/post/${post.pid}`}>{post.title}</Link>
           </Td>
+          <Td width="120px">{post.visit_number}</Td>
           <Td width="120px">{post.date}</Td>
-          <Td width="120px">{post.views}</Td>
         </tr>
       ))}
     </tbody>
